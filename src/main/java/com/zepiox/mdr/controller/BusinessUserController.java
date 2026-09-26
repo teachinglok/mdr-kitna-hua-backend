@@ -27,13 +27,13 @@ public class BusinessUserController {
 
         if (businessUserOptional.isPresent()) {
             BusinessUser businessUser = businessUserOptional.get();
+            ApplicationSuccessResponse response;
             if (businessUser.getOtp().equals(otp)) {
-                ApplicationSuccessResponse response = new ApplicationSuccessResponse(null, "OTP verified successfully.", null);
-                return ResponseEntity.ok(response);
+                response = new ApplicationSuccessResponse(null, "OTP verified successfully.", null);
             } else {
-                ApplicationSuccessResponse response = new ApplicationSuccessResponse(null, "Invalid OTP.", null);
-                return ResponseEntity.ok(response);
+                response = new ApplicationSuccessResponse(null, "Invalid OTP.", null);
             }
+            return ResponseEntity.ok(response);
         } else {
             ApplicationSuccessResponse response = new ApplicationSuccessResponse(null, "Email not found.", null);
             return ResponseEntity.ok(response);
